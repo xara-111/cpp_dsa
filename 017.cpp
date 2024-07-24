@@ -245,3 +245,238 @@ int main()
  b.c=20;   //ONLY PUBLIC CAN BE ACCESSED ON AN OBJECT
 } 
 */
+
+
+
+
+
+
+
+//WAYS OF INHERITANCE
+/*
+//PUBLIC PARENT
+
+#include<iostream>
+using namespace std;
+
+class parent
+{
+    private: int a;
+    protected: int b;
+    public: int c;
+
+    void funParent()
+    {
+        a=10;
+        b=20;
+        c=15;
+    }
+};
+
+class child:public parent
+{
+    public:
+    void funChild()
+    {
+        //a=10;   NOT ACCESSIBLE
+        b=5;
+        c=15;
+    }
+};
+
+class grandchild: public child
+{
+    public:
+    void funGrandchild()
+    {
+        //a=10;   NOT ACCESSIBLE
+        b=5;
+        c=20;
+    }
+};
+
+int main()
+{
+    child c;
+    //c.a=10;
+    //c.b=5;
+    c.c=20;   //ONLY PUBLIC ONE IS ACCESSIBLE WITH OBJECT OF CLASS
+}
+*/
+
+
+/*
+//PROTECTED PARENT
+
+#include<iostream>
+using namespace std;
+
+class parent
+{
+    private: int a;
+    protected: int b;
+    public: int c;
+
+    void funParent()
+    {
+        a=10;
+        b=20;
+        c=15;
+    }
+};
+
+class child:protected parent
+{
+    protected:
+
+    public:
+    void funChild()
+    {
+        //a=10;
+        b=5;
+        c=15;
+    }
+};
+
+class grandchild: public child
+{
+    public:
+    void funGrandchild()
+    {
+        //a=10;
+        b=5;
+        c=20;
+    }
+};
+
+int main()
+{
+    child c;
+    //c.a=10;
+    //c.b=5;
+    //c.c=20;   NONE ARE ACCESSIBLE WITH OBJECT OF CLASS
+}
+*/
+
+
+/*
+//PRIVATE PARENT
+
+#include<iostream>
+using namespace std;
+
+class parent
+{
+    private: int a;
+    protected: int b;
+    public: int c;
+
+    void funParent()
+    {
+        a=10;
+        b=20;
+        c=15;
+    }
+};
+
+class child:private parent
+{
+    private:
+
+    protected:
+
+    public:
+    void funChild()
+    {
+        //a=10;
+        b=5;
+        c=15;
+    }
+};
+
+class grandchild: public child
+{
+    public:
+    void funGrandchild()
+    {
+        //a=10;  NONE ARE ACCESSIBLE IN GRANDCHILD CLASS
+        //b=5;
+        //c=20;
+    }
+};
+
+int main()
+{
+    child c;
+    //c.a=10;
+    //c.b=5;
+    //c.c=20;
+}
+*/
+
+
+//PRACTICE EXERCISE
+#include<iostream>
+using namespace std;
+class Employee
+{
+    private:
+    int EmploId;
+    string EmploName;
+
+    public:
+    Employee(int eid, string en)
+    {
+        EmploId=eid;
+        EmploName=en;
+    }
+    int getEmploId()
+    {
+        return EmploId;
+    }
+    string getEmploName()
+    {
+        return EmploName;
+    }
+
+};
+
+class Fulltime:public Employee
+{
+    private:
+    int salary;
+    public:
+    Fulltime(int eid ,string en,int sal):Employee(eid,en)
+    {
+        salary=sal;
+    }
+
+    int getSalary()
+    {
+        return salary;
+    }
+};
+
+class parttime: public Employee
+{
+    private:
+    int wages;
+    public:
+    parttime(int eid, string en, int w):Employee(eid,en)
+    {
+        wages=w;
+    }
+    int getWages()
+    {
+        return wages;
+    }
+};
+
+int main()
+{
+    Fulltime e1(23,"Julia",30000);
+    parttime e2(47,"Jules",2000);
+    cout<<"Salary of "<<e1.getEmploName()<<" is "<<e1.getSalary()<<endl;
+    cout<<"Wage of "<<e2.getEmploName()<<" is "<<e2.getWages()<<endl;
+
+}
