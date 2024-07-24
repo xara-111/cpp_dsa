@@ -415,6 +415,8 @@ int main()
 */
 
 
+
+
 //PRACTICE EXERCISE
 #include<iostream>
 using namespace std;
@@ -446,7 +448,7 @@ class Fulltime:public Employee
     private:
     int salary;
     public:
-    Fulltime(int eid ,string en,int sal):Employee(eid,en)
+    Fulltime(int eid ,string en,int sal):Employee(eid,en) //FULLTIME CONSTRUCTOR CALLING PARAMETERIZED CNSTRUCTOR OF EMPLOYEE
     {
         salary=sal;
     }
