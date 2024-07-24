@@ -176,3 +176,159 @@ int main()
 //THIS IS RUNTIME POLYMORPHISM.
 //SO USING VIRTUAL FUNCTION,OVERRIDE FUNCTION,BASE CLASS POINTER DERIVE CLASS OBJECT WE CAN ACHIEVE POLYMORPHISM.
 */
+
+
+
+
+//RUNTIME POLYMORPHISM
+//(IN JAVA IT'S CALLED DYNAMIC METHOD DISPATCH)
+/*
+#include<iostream>
+using namespace std;
+
+class car  //CLASS CAR IS ABSTRACT CLASS
+{
+    public:
+    virtual void start()=0; //PURE VIRTUAL CLASS
+    virtual void stop()=0;
+};
+class innova:public car
+{
+    public:
+    void start()
+    {
+        cout<<"Innova started\n";
+    }
+    void stop()
+    {
+        cout<<"Innova stopped\n";
+    }
+};
+
+
+class swift:public car
+{
+    public:
+    void start()
+    {
+        cout<<"swift started\n";
+    }
+    void stop()
+    {
+        cout<<"swift stopped\n";
+    }
+};
+
+int main()
+{
+    car *c=new innova();
+    c->start();   //POLYMORPHISM
+
+    c=new swift();
+    c->start();   //POLYMORPHISM
+
+}
+*/
+
+
+
+
+
+//ABSTRACT CLASS
+/*
+using namespace std;
+class Base
+{
+public:
+//ABSTRACT CLASS
+//PURPOSE IS TO ACHIEVE POLYMORPHISM
+//AKA INTERFACES
+ virtual void fun1()=0;
+ virtual void fun2()=0;
+};
+class Derived :public Base
+{
+public:
+ void fun1()
+ {
+ cout<<"fun1 of Derived"<<endl;
+ }
+ void fun2()
+ {
+ cout<<"fun2 of Derived"<<endl;
+ }
+
+};
+int main()
+{
+ Derived d;
+ d.fun1();
+ d.fun2();
+
+} 
+*/
+
+//PRACTICE EXERCISE
+#include<iostream>
+using namespace std;
+
+class Shape
+{
+    public:
+    virtual float area()=0;
+    virtual float perimeter()=0;
+};
+
+class Rectangle:public Shape
+{
+    private:
+    float length;
+    float breadth;
+
+    public:
+    Rectangle(int l=1, int b=1)
+    {
+        length=l;
+        breadth=b;
+    }
+    float area()
+    {
+        return length*breadth;
+    }
+    float perimeter()
+    {
+        return 2*(length+breadth);
+    }
+};
+
+class Circle: public Shape
+{
+    private:
+    float radius;
+
+    public:
+    Circle(float r)
+    {
+        radius=r;
+    }
+    float area()
+    {
+        return 3.14*radius*radius;
+    }
+    float perimeter()
+    {
+        return 2*3.14*radius;
+    }
+};
+
+int main()
+{
+    Shape *s=new Rectangle(10,5);
+    cout<<"Area of Rectangle "<<s->area()<<endl;
+    cout<<"Perimeter of Rectangle "<<s->perimeter()<<endl;
+
+    s=new Circle(10);
+    cout<<"Area of circle "<<s->area()<<endl;
+    cout<<"Perimeter of circle "<<s->perimeter()<<endl;
+
+}

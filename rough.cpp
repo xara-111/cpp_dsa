@@ -1,102 +1,40 @@
-//SCOPE RESOLUTION
-/*
 #include<iostream>
 using namespace std;
-class Rectangle
+class Shape
+{
+public:
+ virtual float area()=0;
+ virtual float perimeter()=0;
+};
+class Rectangle:public Shape
 {
 private:
-     int length;
-     int breadth;
-public: 
-    //CONSTRUCTOR
-    Rectangle();
-    Rectangle(int l, int b);
-    Rectangle(Rectangle &rect);
+ float length;
+ float breadth;
+public:
+ Rectangle(int l=1,int b=1){length=1;breadth=b;}
 
-    //MUTATORS/SETTERS
-    void setLength(int l);
-    void setBreadth(int b);
+ float area(){ return length*breadth;}
+ float perimeter(){return 2*(length+breadth);}
 
-    //ACCESORS/GETTER
-    int getLength();
-    int getBreadth();
-
-    //FACILITATORS
-    int area();
-    int perimeter();
-
-    //INSPECTION/ENQUIRY
-    bool isSquare();
-
-    //DESTRUCTOR
-    ~Rectangle();
 };
-
-
+class Circle:public Shape
+{
+private:
+ float radius;
+public:
+ Circle(float r){radius=r;}
+ float area(){return 3.1425*radius*radius;}
+ float perimeter(){return 2*3.1425*radius;}
+};
 int main()
 {
-    Rectangle r(10,10);
-    cout<<"Area:"<<r.area();
-    if(r.isSquare())
-    {
-        cout<<"Yes\n";
-    }
-}
+ Shape *s=new Rectangle(10,5);
+ cout<<"Area of Rectangle "<<s->area()<<endl;
+ cout<<"Perimeter of Rectangle "<<s->perimeter()<<endl;
 
-Rectangle::Rectangle()
-{
-    length=1;
-    breadth=1;
-}
-Rectangle::Rectangle(int l,int b)
-{
-    setLength(l);
-    setBreadth(b);
-}
+ s=new Circle(10);
+ cout<<"Area of Circle "<<s->area()<<endl;
+ cout<<"Perimeter of Circle "<<s->perimeter()<<endl;
 
-Rectangle::Rectangle(Rectangle &rect)
-{
-    length=rect.length;
-    breadth=rect.breadth;
 }
-
-void Rectangle::setLength(int l)
-{
-    length=l;
-}
-
-void Rectangle::setBreadth(int b)
-{
-    breadth=b;
-}
-
-int Rectangle::getLength()
-{
-    return length;
-}
-int Rectangle::getBreadth()
-{
-    return breadth;
-}
-
-int Rectangle:: area()
-{
-    return length*breadth;
-}
-
-int Rectangle::perimeter()
-{
-    return 2*(length+breadth);
-}
-
-bool Rectangle::isSquare()
-{
-    return length==breadth;
-}
-
-Rectangle:: ~Rectangle()
-//AFTER THE END OF MAIN FUNCTION AUTOMATICALLY DESTRUCTOR WOULD BE CALLED AND DISPLAY THE GIVEN MESSAGE 
-{
-    cout<<"Rectangle Destroyed\n";
-}
-*/
