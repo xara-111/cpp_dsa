@@ -197,5 +197,7 @@ class outer
 int main()
 {
     outer::inner i;
+    outer o;
+    o.fun();    //OUTPUT: Show25
 }
 */
