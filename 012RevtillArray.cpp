@@ -1066,7 +1066,7 @@ int main()
 */
 
 
-/*
+
 //multiply 2 matrices
 #include<iostream>
 using namespace std;
@@ -1134,4 +1134,3 @@ int main()
         //cout<<endl;
     }
 }
-*/
