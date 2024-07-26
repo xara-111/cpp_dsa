@@ -159,6 +159,7 @@ int main()
 */
 
 //NAMESPACES
+/*
 #include<iostream>
 using namespace std;
 
@@ -184,3 +185,5 @@ int main()
     Second::fun();
     std::cout<<"KKK"<<endl;
 }
+*/
+
